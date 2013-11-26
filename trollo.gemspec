@@ -5,11 +5,11 @@ require "trollo/version"
 Gem::Specification.new do |s|
   s.name        = "trollo"
   s.version     = Trollo::VERSION
-  s.authors     = ["Douglas Anderson", "Jeffrey van Aswegen"]
-  s.email       = ["i.am.douglas.anderson@gmail.com", "jeffmess@gmail.com"]
-  s.homepage    = 'https://github.com/tehtorq/invoicing'
-  s.summary     = %q{ An trollo gem. }
-  s.description = %q{ Manage invoices. }
+  s.authors     = ["Douglas Anderson"]
+  s.email       = ["i.am.douglas.anderson@gmail.com"]
+  s.homepage    = 'https://github.com/teachme2/trollo'
+  s.summary     = %q{ A trollo gem. }
+  s.description = %q{ Trolololo. }
 
   s.rubyforge_project = "trollo"
 
