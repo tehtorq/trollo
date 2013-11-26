@@ -10,8 +10,8 @@ module Trollo
     
 end
 
+require "trollo/troller"
 require "trollo/card"
 require "trollo/list"
 require "trollo/task"
 require "trollo/tasklist"
-require "trollo/troller"
