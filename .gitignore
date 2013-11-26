@@ -1,0 +1,6 @@
+*.gem
+.bundle
+Gemfile.lock
+pkg/*
+spec/internal/db/*.sqlite
+spec/internal/config/database.yml

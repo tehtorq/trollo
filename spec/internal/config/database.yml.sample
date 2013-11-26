@@ -1,0 +1,3 @@
+test:
+  adapter:  sqlite3
+  database: db/trollo_test.sqlite
