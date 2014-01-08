@@ -37,6 +37,11 @@ ActiveRecord::Schema.define do
     t.timestamps
   end
 
+  create_table :trollo_subscriptions do |t|
+    t.references :list
+    t.references :subscriber, polymorphic: true
+  end
+
   add_index :trollo_lists, [:trollable_type, :trollable_id]
 
   add_index :trollo_cards, :list_id
