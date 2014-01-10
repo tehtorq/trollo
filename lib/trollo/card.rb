@@ -7,7 +7,7 @@ module Trollo
     belongs_to :list, touch: true
     has_many :tasklists, order: :ordinal, dependent: :destroy
     before_save :set_ordinal
-    attr_accessible :name, :workflow_state, :trollable
+    attr_accessible :name, :description, :workflow_state, :trollable
 
     scope :due_today, lambda { where(due_at: Time.now.beginning_of_day..Time.now.end_of_day) }
     scope :overdue, lambda { where('due_at < ?', Time.now) }

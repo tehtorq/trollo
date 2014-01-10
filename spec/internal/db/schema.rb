@@ -10,6 +10,7 @@ ActiveRecord::Schema.define do
     t.references :list
     t.integer :ordinal
     t.string :name
+    t.text :description
     t.string :workflow_state
     t.timestamp :due_at
     t.references :trollable, polymorphic: true
