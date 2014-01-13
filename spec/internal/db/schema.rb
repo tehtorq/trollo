@@ -43,6 +43,15 @@ ActiveRecord::Schema.define do
     t.references :subscriber, polymorphic: true
   end
 
+  create_table :trollo_labels do |t|
+    t.string :name
+  end
+
+  create_table :trollo_labels_lists do |t|
+    t.references :label
+    t.references :list
+  end
+
   add_index :trollo_lists, [:trollable_type, :trollable_id]
 
   add_index :trollo_cards, :list_id
