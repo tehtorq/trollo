@@ -3,6 +3,7 @@ module Trollo
   class Card < ActiveRecord::Base
     include Troller
     include Workflow
+    acts_as_commentable
 
     belongs_to :list, touch: true
     has_many :tasklists, order: :ordinal, dependent: :destroy
