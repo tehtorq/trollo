@@ -53,6 +53,11 @@ class CreateTrolloTables < ActiveRecord::Migration
       t.references :list
     end
 
+    create_table :trollo_cards_labels do |t|
+      t.references :card
+      t.references :label
+    end
+
     add_index :trollo_lists, [:trollable_type, :trollable_id]
 
     add_index :trollo_cards, :list_id

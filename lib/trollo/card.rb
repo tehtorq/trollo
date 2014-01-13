@@ -6,6 +6,7 @@ module Trollo
 
     belongs_to :list, touch: true
     has_many :tasklists, order: :ordinal, dependent: :destroy
+    has_and_belongs_to_many :labels, join_table: 'trollo_cards_labels'
     before_save :set_ordinal
     attr_accessible :name, :description, :workflow_state, :trollable
 
@@ -23,7 +24,11 @@ module Trollo
     end    
 
     def set_ordinal
-      self.ordinal ||= list.cards.length + 1
+      self.ordinal ||= if list
+        list.cards.length + 1
+      else
+        1
+      end
     end
 
     def check
