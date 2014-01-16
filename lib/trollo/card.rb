@@ -15,12 +15,12 @@ module Trollo
     scope :overdue, lambda { where('due_at < ?', Time.now) }
 
     workflow do
-      state :complete do
-        event :undo, :transitions_to => :incomplete
+      state :active do
+        event :archive, :transitions_to => :archived
       end
 
-      state :incomplete do
-        event :finish, :transitions_to => :complete
+      state :archived do
+        event :unarchive, :transitions_to => :active
       end
     end    
 
@@ -33,16 +33,7 @@ module Trollo
     end
 
     def check
-      check_complete
       check_due_at
-    end
-
-    def check_complete
-      if complete?
-        undo! if tasklists.any?(&:incomplete?)
-      elsif incomplete?
-        finish! if tasklists.all?(&:complete?)
-      end
     end
 
     def check_due_at
