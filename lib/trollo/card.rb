@@ -41,6 +41,20 @@ module Trollo
       self.save!
     end
 
+    def add_label(name)
+      return if has_label?(name)
+      label = Label.where(name: name).first || Label.create!(name: name)
+      self.labels << label
+    end
+
+    def remove_label(name)
+      self.labels -= Label.where(name: name)
+    end
+
+    def has_label?(name)
+      labels.map(&:name).include?(name)
+    end
+      
   end
 
 end
