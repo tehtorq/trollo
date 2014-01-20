@@ -13,7 +13,7 @@ class CreateTrolloTables < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :workflow_state
-      t.timestamp :due_at
+      t.datetime :due_at
       t.references :trollable, polymorphic: true
       t.timestamps
     end
@@ -23,7 +23,7 @@ class CreateTrolloTables < ActiveRecord::Migration
       t.integer :ordinal
       t.string :name
       t.string :workflow_state
-      t.timestamp :due_at
+      t.datetime :due_at
       t.references :trollable, polymorphic: true
       t.timestamps
     end
@@ -34,7 +34,7 @@ class CreateTrolloTables < ActiveRecord::Migration
       t.string :name
       t.string :group
       t.string :workflow_state
-      t.timestamp :due_at
+      t.datetime :due_at
       t.references :trollable, polymorphic: true
       t.timestamps
     end
