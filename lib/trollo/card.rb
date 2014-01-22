@@ -9,7 +9,7 @@ module Trollo
     has_many :tasklists, order: :ordinal, dependent: :destroy
     has_and_belongs_to_many :labels, join_table: 'trollo_cards_labels'
     before_save :set_ordinal
-    attr_accessible :name, :description, :workflow_state, :trollable
+    attr_accessible :name, :description, :workflow_state, :due_at, :trollable
 
     scope :due_today, lambda { where(due_at: Time.now.beginning_of_day..Time.now.end_of_day) }
     scope :overdue, lambda { where('due_at < ?', Time.now) }

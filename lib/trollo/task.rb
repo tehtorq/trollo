@@ -7,7 +7,7 @@ module Trollo
     belongs_to :tasklist, touch: true
     before_save :set_ordinal
     after_save :update_tasklist
-    attr_accessible :name, :group, :workflow_state, :trollable
+    attr_accessible :name, :group, :workflow_state, :due_at, :trollable
 
     workflow do
       state :incomplete do
