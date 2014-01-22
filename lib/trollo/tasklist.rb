@@ -42,7 +42,7 @@ module Trollo
     end
 
     def check_due_at
-      self.due_at = tasks.minimum(:due_at)
+      self.due_at = tasks.where(workflow_state: 'incomplete').minimum(:due_at)
       self.save!
     end
 
