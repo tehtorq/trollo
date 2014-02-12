@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "activesupport"
   s.add_dependency "activerecord", "~> 3.0"
   s.add_dependency "i18n"
-  s.add_dependency "workflow", '= 0.8.7'
+  s.add_dependency "workflow"
   s.add_dependency "acts_as_commentable", '= 3.0.1'
   
   s.add_development_dependency 'combustion', '~> 0.3.1'
