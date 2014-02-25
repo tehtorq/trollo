@@ -34,6 +34,7 @@ module Trollo
 
     def check
       check_due_at
+      unarchive! if due_at && archived?
     end
 
     def check_due_at
