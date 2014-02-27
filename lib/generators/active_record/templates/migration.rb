@@ -1,9 +1,18 @@
 class CreateTrolloTables < ActiveRecord::Migration
   def self.change
 
+    create_table :trollo_boards do |t|
+      t.string :name
+      t.timestamps
+    end
+
+    create_table :boards_lists do |t|
+      t.references :board
+      t.references :list
+    end
+
     create_table :trollo_lists do |t|
       t.string :name
-      t.references :trollable, polymorphic: true
       t.timestamps
     end
 
@@ -40,7 +49,7 @@ class CreateTrolloTables < ActiveRecord::Migration
     end
 
     create_table :trollo_subscriptions do |t|
-      t.references :list
+      t.references :board
       t.references :subscriber, polymorphic: true
     end
 
@@ -57,8 +66,6 @@ class CreateTrolloTables < ActiveRecord::Migration
       t.references :card
       t.references :label
     end
-
-    add_index :trollo_lists, [:trollable_type, :trollable_id]
 
     add_index :trollo_cards, :list_id
     add_index :trollo_cards, [:trollable_type, :trollable_id]
