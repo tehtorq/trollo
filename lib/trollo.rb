@@ -14,6 +14,7 @@ end
 require "trollo/troller"
 require "trollo/card"
 require "trollo/list"
+require "trollo/board"
 require "trollo/task"
 require "trollo/tasklist"
 require "trollo/subscription"
