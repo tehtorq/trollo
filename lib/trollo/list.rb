@@ -1,12 +1,14 @@
 module Trollo
 
   class List < ActiveRecord::Base
-    include Troller
-
+    has_and_belongs_to_many :boards
     has_many :cards, order: 'due_at ASC', dependent: :destroy
     has_and_belongs_to_many :labels, join_table: 'trollo_labels_lists'
-    has_many :subscriptions, dependent: :destroy
-    attr_accessible :name, :trollable
+    attr_accessible :name
+
+    def named(name)
+      where(name: name).first
+    end
 
     def add_label(name)
       return if has_label?(name)
