@@ -6,13 +6,10 @@ class CreateTrolloTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :boards_lists do |t|
-      t.references :board
-      t.references :list
-    end
-
     create_table :trollo_lists do |t|
+      t.references :board
       t.string :name
+      t.integer :ordinal
       t.timestamps
     end
 

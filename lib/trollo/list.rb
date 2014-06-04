@@ -1,7 +1,7 @@
 module Trollo
 
   class List < ActiveRecord::Base
-    has_and_belongs_to_many :boards
+    belongs_to :board
     has_many :cards, order: 'due_at ASC', dependent: :destroy
     has_and_belongs_to_many :labels, join_table: 'trollo_labels_lists'
     attr_accessible :name
