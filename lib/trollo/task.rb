@@ -10,6 +10,8 @@ module Trollo
     after_destroy :update_tasklist
     attr_accessible :name, :group, :workflow_state, :due_at, :trollable
 
+    scope :search, lambda {|term| unless term.blank?;where("name LIKE :q", q: "%#{term}%");end;}
+
     workflow do
       state :incomplete do
         event :finish, :transitions_to => :complete
