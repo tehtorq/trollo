@@ -11,6 +11,7 @@ module Trollo
     attr_accessible :name, :group, :workflow_state, :due_at, :trollable
 
     scope :search, lambda {|term| unless term.blank?;where("name LIKE :q", q: "%#{term}%");end;}
+    scope :overdue, lambda { with_incomplete_state.where('due_at IS NOT NULL AND due_at < ?', Time.now) }
 
     workflow do
       state :incomplete do

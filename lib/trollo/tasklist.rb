@@ -25,7 +25,7 @@ module Trollo
     end
 
     def next_task
-      tasks.select(&:incomplete?).first
+      tasks.with_incomplete_state.first
     end
 
     def check
@@ -35,14 +35,14 @@ module Trollo
 
     def check_complete
       if complete?
-        undo! if tasks.any?(&:incomplete?)
+        undo! if tasks.with_incomplete_state.any?
       elsif incomplete?
-        finish! if tasks.all?(&:complete?)
+        finish! if tasks.with_incomplete_state.none?
       end
     end
 
     def check_due_at
-      self.due_at = tasks.where(workflow_state: 'incomplete').minimum(:due_at)
+      self.due_at = tasks.with_incomplete_state.minimum(:due_at)
       self.save!
     end
 

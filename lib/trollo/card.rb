@@ -11,7 +11,6 @@ module Trollo
     before_save :set_ordinal
     attr_accessible :name, :description, :workflow_state, :due_at, :trollable
 
-    scope :due_today, lambda { where(due_at: Time.now.beginning_of_day..Time.now.end_of_day) }
     scope :overdue, lambda { where('due_at < ?', Time.now) }
 
     workflow do
