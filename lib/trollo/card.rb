@@ -45,6 +45,10 @@ module Trollo
       return if has_label?(name)
       label = Label.where(name: name).first || Label.create!(name: name)
       self.labels << label
+      
+      if self.list && self.list.board
+        self.list.board.add_label(name)
+      end
     end
 
     def remove_label(name)
@@ -52,7 +56,7 @@ module Trollo
     end
 
     def has_label?(name)
-      labels.map(&:name).include?(name)
+      labels.pluck(:name).include?(name)
     end
       
   end

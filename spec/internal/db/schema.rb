@@ -53,9 +53,9 @@ ActiveRecord::Schema.define do
     t.string :name
   end
 
-  create_table :trollo_labels_lists do |t|
+  create_table :trollo_boards_labels do |t|
+    t.references :board
     t.references :label
-    t.references :list
   end
 
   create_table :trollo_cards_labels do |t|
