@@ -9,6 +9,7 @@ module Trollo
     after_save :update_tasklist
     after_destroy :update_tasklist
     attr_accessible :name, :group, :workflow_state, :due_at, :trollable
+    serialize :data
 
     scope :search, lambda {|term| unless term.blank?;where("name LIKE :q", q: "%#{term}%");end;}
     scope :overdue, lambda { with_incomplete_state.where('due_at IS NOT NULL AND due_at < ?', Time.now) }

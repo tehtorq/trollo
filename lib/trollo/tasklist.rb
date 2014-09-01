@@ -50,6 +50,18 @@ module Trollo
       card.check
     end
 
+    def finish_tasks(identifier)
+      if identifier
+        self.tasks.with_incomplete_state.where(identifier: identifier).each(&:finish!)
+      end
+    end
+
+    def remove_tasks(identifier)
+      if identifier
+        self.tasks.where(identifier: identifier).each(&:destroy)
+      end
+    end
+
   end
 
 end

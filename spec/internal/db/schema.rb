@@ -37,7 +37,8 @@ ActiveRecord::Schema.define do
     t.references :tasklist
     t.integer :ordinal
     t.string :name
-    t.string :group
+    t.string :identifier
+    t.text :data
     t.string :workflow_state
     t.datetime :due_at
     t.references :trollable, polymorphic: true

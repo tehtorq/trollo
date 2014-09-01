@@ -51,6 +51,14 @@ module Trollo
       end
     end
 
+    def finish_tasks(identifier)
+      self.tasklists.each{|tasklist| tasklist.finish_tasks(identifier)}
+    end
+
+    def remove_tasks(identifier)
+      self.tasklists.each{|tasklist| tasklist.remove_tasks(identifier)}
+    end
+
     def remove_label(name)
       self.labels -= Label.where(name: name)
     end
