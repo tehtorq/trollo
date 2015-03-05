@@ -31,6 +31,18 @@ module Trollo
       end
     end
 
+    def tasks
+      Trollo::Task.where(tasklist_id: tasklist_ids)
+    end
+
+    def incomplete_tasks
+      tasks.with_incomplete_state
+    end
+
+    def overdue_tasks
+      incomplete_tasks.overdue
+    end
+
     def check
       check_due_at
       unarchive! if due_at && archived?
