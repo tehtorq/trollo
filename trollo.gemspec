@@ -19,11 +19,11 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "activesupport"
-  s.add_dependency "activerecord", "~> 3.0"
+  s.add_dependency "activerecord"
   s.add_dependency "i18n"
   s.add_dependency "workflow"
-  s.add_dependency "acts_as_commentable", '= 3.0.1'
+  s.add_dependency "acts_as_commentable"
   
-  s.add_development_dependency 'combustion', '~> 0.3.1'
-  s.add_development_dependency 'database_cleaner', '~> 1.2.0'
+  s.add_development_dependency 'combustion'
+  s.add_development_dependency 'database_cleaner'
 end
