@@ -9,7 +9,6 @@ require 'rspec/rails'
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
-  config.color_enabled = true
   config.formatter = :documentation
 
   config.before(:suite) do

@@ -6,7 +6,7 @@ module Trollo
     acts_as_commentable
 
     belongs_to :list, touch: true
-    has_many :tasklists, order: :ordinal, dependent: :destroy
+    has_many :tasklists, -> { order("ordinal ASC") }, dependent: :destroy
     has_and_belongs_to_many :labels, join_table: 'trollo_cards_labels'
     before_save :set_ordinal
 

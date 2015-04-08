@@ -1,7 +1,7 @@
 module Trollo
 
   class Board < ActiveRecord::Base
-    has_many :lists, order: 'ordinal ASC', dependent: :destroy
+    has_many :lists, -> { order("ordinal ASC") }, dependent: :destroy
     has_many :subscriptions, dependent: :destroy
     has_and_belongs_to_many :labels, join_table: 'trollo_boards_labels'
 

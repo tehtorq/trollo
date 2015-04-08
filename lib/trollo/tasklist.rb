@@ -5,7 +5,7 @@ module Trollo
     include Workflow
 
     belongs_to :card, touch: true
-    has_many :tasks, order: :ordinal, dependent: :destroy
+    has_many :tasks, -> { order("ordinal ASC") }, dependent: :destroy
     before_save :set_ordinal
     after_save :update_card
 
