@@ -8,11 +8,17 @@ module Trollo
     before_save :set_ordinal
     after_save :update_tasklist
     after_destroy :update_tasklist
-    attr_accessible :name, :identifier, :data, :workflow_state, :due_at, :trollable
     serialize :data
 
-    scope :search, lambda {|term| unless term.blank?;where("name LIKE :q", q: "%#{term}%");end;}
-    scope :overdue, lambda { with_incomplete_state.where('due_at IS NOT NULL AND due_at < ?', Time.now) }
+    def self.search(term)
+      unless term.blank?
+        where("name LIKE :q", q: "%#{term}%")
+      end
+    end
+
+    def self.overdue
+      with_incomplete_state.where('due_at IS NOT NULL AND due_at < ?', Time.now)
+    end
 
     workflow do
       state :incomplete do

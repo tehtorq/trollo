@@ -8,7 +8,6 @@ module Trollo
     has_many :tasks, order: :ordinal, dependent: :destroy
     before_save :set_ordinal
     after_save :update_card
-    attr_accessible :name, :workflow_state, :trollable
 
     workflow do
       state :complete do

@@ -4,7 +4,6 @@ module Trollo
     has_many :lists, order: 'ordinal ASC', dependent: :destroy
     has_many :subscriptions, dependent: :destroy
     has_and_belongs_to_many :labels, join_table: 'trollo_boards_labels'
-    attr_accessible :name
 
     def tasks
       card_ids = Trollo::Card.where(list_id: list_ids).pluck(:id)
