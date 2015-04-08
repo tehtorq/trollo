@@ -20,12 +20,20 @@ module Trollo
       end
     end    
 
+    def incomplete_tasks
+      tasks.with_incomplete_state
+    end
+
+    def overdue_tasks
+      incomplete_tasks.overdue
+    end
+
     def set_ordinal
       self.ordinal ||= card.tasklists.length + 1
     end
 
     def next_task
-      tasks.with_incomplete_state.first
+      incomplete_tasks.first
     end
 
     def check
@@ -35,14 +43,14 @@ module Trollo
 
     def check_complete
       if complete?
-        undo! if tasks.with_incomplete_state.any?
+        undo! if incomplete_tasks.any?
       elsif incomplete?
-        finish! if tasks.with_incomplete_state.none?
+        finish! if incomplete_tasks.none?
       end
     end
 
     def check_due_at
-      self.due_at = tasks.with_incomplete_state.minimum(:due_at)
+      self.due_at = incomplete_tasks.minimum(:due_at)
       self.save!
     end
 
@@ -52,13 +60,13 @@ module Trollo
 
     def finish_tasks(identifier)
       if identifier
-        self.tasks.with_incomplete_state.where(identifier: identifier).each(&:finish!)
+        incomplete_tasks.where(identifier: identifier).each(&:finish!)
       end
     end
 
     def remove_tasks(identifier)
       if identifier
-        self.tasks.where(identifier: identifier).each(&:destroy)
+        tasks.where(identifier: identifier).each(&:destroy)
       end
     end
 
