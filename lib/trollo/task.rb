@@ -3,6 +3,7 @@ module Trollo
   class Task < ActiveRecord::Base
     include Troller
     include Workflow
+    include SearchCop
 
     belongs_to :tasklist, touch: true
     before_save :set_ordinal
@@ -10,10 +11,8 @@ module Trollo
     after_destroy :update_tasklist
     serialize :data
 
-    def self.search(term)
-      unless term.blank?
-        where("name LIKE :q", q: "%#{term}%")
-      end
+    search_scope :search do
+      attributes :name
     end
 
     def self.overdue

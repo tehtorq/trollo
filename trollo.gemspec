@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "i18n"
   s.add_dependency "workflow"
   s.add_dependency "acts_as_commentable"
+  s.add_dependency "search_cop"
   
   s.add_development_dependency 'combustion'
   s.add_development_dependency 'database_cleaner'
