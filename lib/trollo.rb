@@ -1,5 +1,6 @@
 require "active_record"
 require "workflow"
+require "search_cop"
 require "acts_as_commentable"
 require "trollo/version"
 
