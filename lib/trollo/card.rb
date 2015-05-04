@@ -26,7 +26,7 @@ module Trollo
 
     def set_ordinal
       self.ordinal ||= if list
-        list.cards.length + 1
+        list.cards.count + 1
       else
         1
       end

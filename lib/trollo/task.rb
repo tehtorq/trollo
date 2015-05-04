@@ -30,7 +30,7 @@ module Trollo
     end
 
     def set_ordinal
-      self.ordinal ||= tasklist.tasks.length + 1
+      self.ordinal ||= tasklist.tasks.count + 1
     end
 
     def overdue?

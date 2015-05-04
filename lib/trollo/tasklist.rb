@@ -28,7 +28,7 @@ module Trollo
     end
 
     def set_ordinal
-      self.ordinal ||= card.tasklists.length + 1
+      self.ordinal ||= card.tasklists.count + 1
     end
 
     def next_task
