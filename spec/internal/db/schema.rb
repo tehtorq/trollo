@@ -42,6 +42,7 @@ ActiveRecord::Schema.define do
     t.string :workflow_state
     t.datetime :due_at
     t.references :trollable, polymorphic: true
+    t.boolean :remind, index: true, default: false
     t.timestamps
   end
 
