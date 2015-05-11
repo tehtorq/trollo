@@ -10,6 +10,7 @@ class CreateTrolloTables < ActiveRecord::Migration
       t.references :board
       t.string :name
       t.integer :ordinal
+      t.boolean :hidden, default: false
       t.timestamps
     end
 
@@ -43,13 +44,14 @@ class CreateTrolloTables < ActiveRecord::Migration
       t.string :workflow_state
       t.datetime :due_at
       t.references :trollable, polymorphic: true
-      t.boolean :remind, index: true, default: false
+      t.boolean :reminder, index: true, default: false
       t.timestamps
     end
 
     create_table :trollo_subscriptions do |t|
       t.references :board
       t.references :subscriber, polymorphic: true
+      t.boolean :reminders, default: false
     end
 
     create_table :trollo_labels do |t|
